@@ -57,6 +57,9 @@ const Collection = () => {
     sortProductData();
   }, [sortType]);
 
+  useEffect(() => {
+    applyFilter();
+  }, [productData]);
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
       <div className="min-w-60">
@@ -92,7 +95,7 @@ const Collection = () => {
               <input type="checkbox" className="w-3" value={"coffee"} onChange={toggleCategory} /> Coffee
             </p>
             <p className="flex gap-2">
-              <input type="checkbox" className="w-3" value={"mocktails"} onChange={toggleCategory} /> Mocktails
+              <input type="checkbox" className="w-3" value={"mocktail"} onChange={toggleCategory} /> Mocktails
             </p>
             <p className="flex gap-2">
               <input type="checkbox" className="w-3" value={"lassi"} onChange={toggleCategory} /> Lassi

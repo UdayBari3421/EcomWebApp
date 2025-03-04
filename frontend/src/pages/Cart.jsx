@@ -6,26 +6,28 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { CartTotal } from "../Components";
 
 const Cart = () => {
-  const { productData, navigate, deleteFromCart, currency, cartItems, addToCart, removeFromCart } = useContext(ShopContext);
+  const { productData, navigate, deleteFromCart, currency, cartItems, addToCart, getTotalPrice, updateQuantity } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
 
   useEffect(() => {
-    let tempData = [];
+    if (productData.length > 0) {
+      let tempData = [];
 
-    for (const items in cartItems) {
-      for (const item in cartItems[items]) {
-        if (cartItems[items][item].quantity > 0) {
-          tempData.push({
-            _id: items,
-            size: item,
-            quantity: cartItems[items][item].quantity,
-            price: cartItems[items][item].price,
-          });
+      for (const items in cartItems) {
+        for (const item in cartItems[items]) {
+          if (cartItems[items][item].quantity > 0) {
+            tempData.push({
+              _id: items,
+              size: item,
+              quantity: cartItems[items][item].quantity,
+              price: cartItems[items][item].price,
+            });
+          }
         }
       }
+      setCartData(tempData);
     }
-    setCartData(tempData);
-  }, [cartItems]);
+  }, [cartItems, productData]);
 
   return (
     <div className="border-t pt-14 px-6">
@@ -56,7 +58,7 @@ const Cart = () => {
                   <p className="text-center">{item.quantity}</p>
                 </span>
                 <div className="flex items-center gap-2">
-                  <button onClick={() => removeFromCart(item._id, item.size)} className="p-1 border rounded">
+                  <button onClick={() => updateQuantity(item._id, item.size, item.price, item.quantity)} className="p-1 border rounded">
                     <FiMinus />
                   </button>
                   <button onClick={() => addToCart(item._id, item.size, item.price)} className="p-1 border rounded">
@@ -77,6 +79,7 @@ const Cart = () => {
           })}
           <div className="border-t pt-6">
             <CartTotal currency getTotalPrice deliveryCharge />
+            <p className={`${getTotalPrice() < 500 ? "block" : "hidden"} text-center text-gray-400`}>If Total Price is greater than 500 delivery is free</p>
             <button onClick={() => navigate("place-order")} className="w-full bg-black text-white py-3 mt-6 rounded hover:bg-gray-800 transition">
               Proceed to Checkout
             </button>

@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { About, Cart, Collection, Contact, Home, Login, Orders, PlaceOrder, Product } from "./pages";
+import { About, Cart, Collection, Contact, Home, Login, Orders, PlaceOrder, Product, Verify } from "./pages";
 import { Footer, Navbar, SearchBar } from "./Components";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,6 +20,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/place-order" element={<PlaceOrder />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/verify" element={<Verify />} />
         </Routes>
       </div>
       <Footer />

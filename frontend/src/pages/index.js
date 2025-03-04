@@ -7,5 +7,6 @@ import Login from "./Login";
 import Orders from "./Orders";
 import PlaceOrder from "./PlaceOrder";
 import Product from "./Product";
+import Verify from "./Verify";
 
-export { Home, Collection, About, Cart, Contact, Login, Orders, PlaceOrder, Product };
+export { Home, Collection, About, Cart, Contact, Login, Orders, PlaceOrder, Product, Verify };

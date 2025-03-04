@@ -10,8 +10,15 @@ import { IoIosArrowBack } from "react-icons/io";
 import logo from "../assets/Images/logo.png";
 
 const Navbar = () => {
-  const { setShowSearch, showSearch, getCartCount } = useContext(ShopContext);
+  const { setShowSearch, showSearch, getCartCount, setCartItems, setToken, navigate, token } = useContext(ShopContext);
   const [visible, setVisible] = useState(false);
+
+  const logout = () => {
+    setToken("");
+    setCartItems({});
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   return (
     <div className="flex items-center justify-between py-5 px-7 font-medium">
@@ -39,16 +46,21 @@ const Navbar = () => {
       <div className="flex items-center gap-6 ">
         <FiSearch onClick={() => setShowSearch(!showSearch)} className="cursor-pointer text-2xl" />
         <div className="group relative">
-          <Link to="/login">
-            <IoPersonCircleOutline className="cursor-pointer text-2xl" />
-          </Link>
-          <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-2">
-            <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
-              <p className="cursor-pointer hover:text-black">Myprofile</p>
-              <p className="cursor-pointer hover:text-black">Orders</p>
-              <p className="cursor-pointer hover:text-black">Logout</p>
+          <IoPersonCircleOutline onClick={() => (token ? null : navigate("/login"))} className="cursor-pointer text-2xl" />
+
+          {token && (
+            <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-2">
+              <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
+                <p className="cursor-pointer hover:text-black">Myprofile</p>
+                <p onClick={() => navigate("/orders")} className="cursor-pointer hover:text-black">
+                  Orders
+                </p>
+                <p onClick={logout} className="cursor-pointer hover:text-black">
+                  Logout
+                </p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <Link to="/cart" className="relative">
           <SlHandbag className="cursor-pointer text-2xl" />

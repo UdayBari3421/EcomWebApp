@@ -90,7 +90,7 @@ import strongpan from "./product-images/strongpan.png";
 import tenderCoconut from "./product-images/tenderCoconut.jpg";
 import vanila from "./product-images/vanila.jpg";
 
-const productData = [
+export const products = [
   {
     _id: "FRUIT001",
     name: "Mango",
@@ -365,7 +365,7 @@ const productData = [
   },
   {
     _id: "DRYFRUIT007",
-    name: "Honew Dates",
+    name: "Honey Dates",
     price: {
       "40ml": 60,
       "80ml": 120,
@@ -550,7 +550,7 @@ const productData = [
       "500gm": 350,
       "1000gm": 700,
     },
-    description: "Pan is a type of dish that is made from betel leaves. It is a very sweet and delicious dish that is often eaten as a dessert.",
+    description: "Rainbow Casata is a type of ice cream that is made from 7 different flavors. It is a very sweet and delicious ice cream that is often eaten as a dessert.",
     image: [casata],
     category: "classic",
     bestseller: true,
@@ -660,7 +660,7 @@ const productData = [
     price: {
       "40ml": 90,
     },
-    description: "Mocha Frappucchino is a type of mocktail that is made from coffee and chocolate. It is a very sweet and delicious mocktail that is often eaten as a dessert.",
+    description: "Mocha Frappucchino is a type of mocktail that is made from soda and mocha. It is a very sweet and delicious mocktail that is often drunk as a summer drink.",
     image: [mocktail1, mocktail2, mocktail3],
     category: "mocktail",
     bestseller: true,
@@ -671,7 +671,7 @@ const productData = [
     price: {
       "40ml": 180,
     },
-    description: "Cold Coffee is a type of coffee that is made from coffee and milk. It is a very sweet and delicious coffee that is often eaten as a dessert.",
+    description: "Cold Coffee is a type of coffee that is made from coffee and milk. It is a very sweet and delicious coffee that is often drunk as a refreshment.",
     image: [coldCoffee1, coldCoffee2],
     category: "coffee",
     bestseller: true,
@@ -682,7 +682,7 @@ const productData = [
     price: {
       "40ml": 20,
     },
-    description: "Hot Coffee is a type of coffee that is made from coffee and milk. It is a very sweet and delicious coffee that is often eaten as a dessert.",
+    description: "Hot Coffee is a type of coffee that is made from coffee and milk. It is a very sweet and delicious coffee that is often drunk as a refreshment.",
     image: [hotCoffee1, hotCoffee2, hotCoffee3],
     category: "coffee",
     bestseller: false,
@@ -693,11 +693,22 @@ const productData = [
     price: {
       "40ml": 95,
     },
-    description: "Rose Faluda is a type of faluda that is made from rose syrup. It is a very sweet and delicious faluda that is often eaten as a dessert.",
+    description:
+      "Falooda is a cold dessert that's made with vermicelli, rose syrup, milk, and other ingredients. It's often served with ice cream. Falooda is popular in India, Pakistan, and the Middle East. It's a sweet and refreshing treat that's perfect for hot summer days.",
+    image: [faluda1, faluda2, faluda3, faluda4],
+    category: "faluda",
+    bestseller: true,
+  },
+  {
+    _id: "LASSI001",
+    name: "Lassi",
+    price: {
+      "40ml": 95,
+    },
+    description:
+      "Lassi is a traditional Indian drink made with yogurt, water, spices, and sometimes fruit. It's a popular drink in India and Pakistan, where it's often served as a refreshing beverage on hot summer days. Lassi is a sweet and tangy drink that's perfect for cooling down on a hot day.",
     image: [faluda1, faluda2, faluda3, faluda4],
     category: "faluda",
     bestseller: true,
   },
 ];
-
-export { productData };

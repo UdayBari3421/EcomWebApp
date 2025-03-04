@@ -15,20 +15,28 @@ const Product = () => {
   const fetchProductData = async () => {
     let Element = await productData.find((item) => item._id == productId);
     setProdData(Element);
-    setImage(Element.image[0]);
-    setPriceArr(
-      Object.entries(Element.price).map(([key, value]) => ({
-        size: key,
-        price: value,
-      }))
-    );
+    setImage(Element?.image[0]);
+
+    Element &&
+      setPriceArr(
+        Object.entries(Element.price).map(([key, value]) => ({
+          size: key,
+          price: value,
+        }))
+      );
   };
 
   useEffect(() => {
     fetchProductData();
   }, [productId, productData]);
 
-  return prodData.image ? (
+  useEffect(() => {
+    if (priceArr.length === 1) {
+      setSize({ size: priceArr[0].size, price: priceArr[0].price });
+    }
+  }, [priceArr]);
+
+  return prodData?.image ? (
     <div className="border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100">
       <div className="flex gap-12 sm:gap-12 flex-col sm:flex-row">
         {/* Product Images */}
@@ -64,25 +72,26 @@ const Product = () => {
           <p className="mt-5 text-gray-500 md:w-4/5">{prodData.description}</p>
 
           {/* Size Selection */}
+
           <div className="flex flex-col gap-4 my-8">
-            <p>Select Size</p>
+            {priceArr.length !== 1 && <p>Select Size</p>}
             <div className="grid grid-cols-3 gap-x-2 gap-y-4">
-              {priceArr.map((product, index) => (
-                <button
-                  onClick={() => setSize({ size: product.size, price: product.price })}
-                  className={`border py-2 px-3 bg-gray-100 ${product.size === size.size ? "border-orange-500 bg-orange-100 text-orange-700" : ""}`}
-                  key={index}
-                >
-                  {product.size}
-                </button>
-              ))}
+              {priceArr.length !== 1 &&
+                priceArr.map((product, index) => (
+                  <button
+                    onClick={() => setSize({ size: product.size, price: product.price })}
+                    className={`border py-2 px-3 bg-gray-100 ${product.size === size.size ? "border-orange-500 bg-orange-100 text-orange-700" : ""}`}
+                    key={index}
+                  >
+                    {product.size}
+                  </button>
+                ))}
             </div>
           </div>
 
           {/* Add to Cart Button */}
           <button
             onClick={() => addToCart(prodData._id, size.size, size.price)}
-            disabled={!size.size}
             className={`bg-black text-white px-8 py-4 font-bold text-sm active:bg-gray-700 ${!size.size ? "opacity-50 cursor-not-allowed" : ""}`}
           >
             ADD TO CART
