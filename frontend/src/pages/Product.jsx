@@ -43,11 +43,11 @@ const Product = () => {
         <div className="flex-1 flex-col-reverse flex gap-3 sm:flex-row">
           <div className="flex flex-col overflow-x-auto sm:overflow-y-scroll sm:w-[18.7%] w-full">
             {prodData.image.map((item, index) => (
-              <img onClick={() => setImage(item)} src={item} className="aspect-square w-full sm:mb-3 flex-shrink-0 cursor-pointer" key={index} alt={item} />
+              <img onClick={() => setImage(item)} draggable="false" src={item} className="rounded-2xl aspect-square w-full sm:mb-3 flex-shrink-0 cursor-pointer" key={index} alt={item} />
             ))}
           </div>
           <div className="w-full sm:w-[80%]">
-            <img src={image} className="aspect-square w-full h-auto" alt="" />
+            <img src={image} draggable="false" className="rounded-xl aspect-square w-full h-auto" alt="" />
           </div>
         </div>
 

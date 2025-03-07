@@ -9,7 +9,7 @@ import heroImage7 from "../assets/product-images/blackCurrant1.jpg";
 let heroImageData = [heroImage, heroImage2, heroImage3, heroImage4, heroImage5, heroImage6, heroImage7];
 const Hero = () => {
   return (
-    <div className="flex flex-col sm:flex-row border border-gray-400">
+    <div className="flex flex-col sm:flex-row border rounded-3xl  overflow-hidden border-gray-400">
       <div className="w-full md:w-6/12 sm:w-6/12 flex items-center justify-center py-10 sm:py-0">
         <div className="text-[#414141]">
           <div className="flex items-center gap-2">

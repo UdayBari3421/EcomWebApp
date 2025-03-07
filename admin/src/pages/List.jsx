@@ -44,7 +44,7 @@ const List = ({ token }) => {
       <p className="mb-2">All Product List</p>
       <div className="flex flex-col gap-2">
         {/* Table */}
-        <div className="hidden md:grid grid-cols-[1fr_2fr_1fr_1fr_1fr] items-center py-1 px-2 border bg-gray-100 text-sm">
+        <div className="hidden rounded-t-xl md:grid grid-cols-[1fr_2fr_1fr_1fr_1fr] items-center py-1 px-2 border bg-gray-100 text-sm">
           <b className="text-center">Image</b>
           <b className="text-center">Name</b>
           <b className="text-center">Category</b>
@@ -54,8 +54,8 @@ const List = ({ token }) => {
 
         {/* Product List */}
         {list.map((item, index) => (
-          <div key={index} className="grid grid-cols-[1fr_3fr_1fr_1fr] md:grid-cols-[1fr_2fr_1fr_1fr_1fr] items-center py-1 px-2 border text-sm">
-            <img src={item.image[0]} className="w-32 mx-auto aspect-square" alt="" />
+          <div key={index} className="rounded-xl grid grid-cols-[1fr_3fr_1fr_1fr] md:grid-cols-[1fr_2fr_1fr_1fr_1fr] items-center py-1 px-2 border text-sm">
+            <img src={item.image[0]} className="w-32 mx-auto aspect-square rounded-md" alt="" />
             <p className="text-center">{item.name}</p>
             <p className="text-center">{item.category}</p>
             <div>

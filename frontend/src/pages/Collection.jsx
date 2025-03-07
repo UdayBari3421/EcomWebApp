@@ -60,6 +60,13 @@ const Collection = () => {
   useEffect(() => {
     applyFilter();
   }, [productData]);
+
+  const handleselect = (e) => {
+    // do not allow to select text
+    e.preventDefault();
+    e.target.blur();
+  };
+
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
       <div className="min-w-60">
@@ -67,38 +74,68 @@ const Collection = () => {
           FILTERS
           <RiArrowDropDownLine onClick={() => setShowFilter(!showFilter)} className={`sm:hidden ${showFilter ? "" : "-rotate-90"}`} />
         </p>
-        <div className={`border border-gray-300 pl-5 py-3 mt-6 ${showFilter ? "" : "hidden"} sm:block`}>
+        <div className={`border border-gray-300 pl-5 py-3 rounded-2xl mt-6 ${showFilter ? "" : "hidden"} sm:block`}>
           <p className="mb-5">CATEGORIES</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
             <p className="flex gap-2">
-              <input type="checkbox" className="w-3" value={"fruit"} onChange={toggleCategory} /> Fruit Icecream
+              <input type="checkbox" id="fruit" className="w-3" value={"fruit"} onChange={toggleCategory} />
+              <label htmlFor="fruit" onSelect={handleselect}>
+                Fruit Icecream
+              </label>
             </p>
             <p className="flex gap-2">
-              <input type="checkbox" className="w-3" value={"dry-fruit"} onChange={toggleCategory} /> Dry Fruit Icecream
+              <input type="checkbox" id="dfruit" className="w-3" value={"dry-fruit"} onChange={toggleCategory} />
+              <label htmlFor="dfruit" onSelect={handleselect}>
+                Dry Fruit Icecream
+              </label>
             </p>
             <p className="flex gap-2">
-              <input type="checkbox" className="w-3" value={"classic"} onChange={toggleCategory} /> Classic Icecream
+              <input type="checkbox" id="classic" className="w-3" value={"classic"} onChange={toggleCategory} />
+              <label htmlFor="classic" onSelect={handleselect}>
+                Classic Icecream
+              </label>
             </p>
             <p className="flex gap-2">
-              <input type="checkbox" className="w-3" value={"chocolate"} onChange={toggleCategory} /> Chocolate Icecream
+              <input type="checkbox" id="chocolate" className="w-3" value={"chocolate"} onChange={toggleCategory} />
+              <label htmlFor="chocolate" onSelect={handleselect}>
+                Chocolate Icecream
+              </label>
             </p>
             <p className="flex gap-2">
-              <input type="checkbox" className="w-3" value={"shake"} onChange={toggleCategory} /> Shake
+              <input type="checkbox" id="shake" className="w-3" value={"shake"} onChange={toggleCategory} />
+              <label htmlFor="shake" onSelect={handleselect}>
+                Shake
+              </label>
             </p>
             <p className="flex gap-2">
-              <input type="checkbox" className="w-3" value={"faluda"} onChange={toggleCategory} /> Faluda
+              <input type="checkbox" className="w-3" value={"faluda"} onChange={toggleCategory} />
+              <label htmlFor="" onSelect={handleselect}>
+                Faluda
+              </label>
             </p>
             <p className="flex gap-2">
-              <input type="checkbox" className="w-3" value={"kulfi"} onChange={toggleCategory} /> Kulfi
+              <input type="checkbox" id="kulfi" className="w-3" value={"kulfi"} onChange={toggleCategory} />
+              <label htmlFor="kulfi" onSelect={handleselect}>
+                Kulfi
+              </label>
             </p>
             <p className="flex gap-2">
-              <input type="checkbox" className="w-3" value={"coffee"} onChange={toggleCategory} /> Coffee
+              <input type="checkbox" id="coffee" className="w-3" value={"coffee"} onChange={toggleCategory} />
+              <label htmlFor="coffee" onSelect={handleselect}>
+                Coffee
+              </label>
             </p>
             <p className="flex gap-2">
-              <input type="checkbox" className="w-3" value={"mocktail"} onChange={toggleCategory} /> Mocktails
+              <input type="checkbox" id="mocktail" className="w-3" value={"mocktail"} onChange={toggleCategory} />
+              <label htmlFor="mocktail" onSelect={handleselect}>
+                Mocktails
+              </label>
             </p>
             <p className="flex gap-2">
-              <input type="checkbox" className="w-3" value={"lassi"} onChange={toggleCategory} /> Lassi
+              <input type="checkbox" id="lassi" className="w-3" value={"lassi"} onChange={toggleCategory} />
+              <label htmlFor="lassi" onSelect={handleselect}>
+                Lassi
+              </label>
             </p>
           </div>
         </div>

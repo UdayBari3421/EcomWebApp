@@ -211,4 +211,16 @@ const updateOrderStatus = async (req, res) => {
   }
 };
 
-export { placeOrder, verifyRazorpay, placeOrderStripe, verifyStripe, placeOrderRazorpay, allOrders, userOrders, updateOrderStatus };
+const deleteOrder = async (req, res) => {
+  try {
+    const { orderId } = req.body;
+
+    await orderModel.findByIdAndDelete(orderId);
+    res.json({ message: "Order Deleted Successfully", success: true, status: 200 });
+  } catch (error) {
+    console.log(error);
+    res.json({ message: error.message, success: false, status: 500 });
+  }
+};
+
+export { deleteOrder, placeOrder, verifyRazorpay, placeOrderStripe, verifyStripe, placeOrderRazorpay, allOrders, userOrders, updateOrderStatus };

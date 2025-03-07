@@ -21,6 +21,21 @@ const Orders = ({ token }) => {
     }
   };
 
+  const deleteOrderHandle = async (e, orderId) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(backendUrl + "/api/order/delete", { orderId }, { headers: { token } });
+
+      if (response.data.success) {
+        await fetchOrders();
+        toast.success(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  };
+
   const fetchOrders = async () => {
     if (token) {
       try {
@@ -46,12 +61,12 @@ const Orders = ({ token }) => {
       <div className="">
         {orders.map((order, index) => (
           <div
-            className="grid grid-cols-1 sm:grid-cols-[0.5fr_2fr_1fr] lg:grid-cols-[0.5fr_2fr_1fr_1fr_1fr] gap-3 items-start border-2 border-gray-200 p-5 md:p-8 my-3 md:my-4 text-xs sm:text-sm text-gray-700"
+            className="rounded-xl shadow-md shadow-slate-700 grid grid-cols-1 sm:grid-cols-[0.5fr_2fr_1fr] lg:grid-cols-[0.5fr_2fr_1fr_1fr_1fr] gap-3 items-start border-2 border-gray-400 p-5 md:p-8 my-3 md:my-4 text-xs sm:text-sm text-gray-700"
             key={index}
           >
             <PiPackageFill className="w-full h-full self-center" />
-            <div className="">
-              <div className="">
+            <div>
+              <div>
                 {order.items.map((item, indx) => {
                   if (indx === order.items.length - 1) {
                     return (
@@ -84,13 +99,18 @@ const Orders = ({ token }) => {
               {currency}
               {order.ammount}
             </p>
-            <select onChange={(e) => orderStatusHandler(e, order._id)} value={order.orderStatus} className="p-2 font-semibold">
-              <option value="Order Placed">Order Placed</option>
-              <option value="Packing">Packing</option>
-              <option value="Shipped">Shipped</option>
-              <option value="Out for delivery">Out for delivery</option>
-              <option value="Delivered">Delivered</option>
-            </select>
+            <div className="flex flex-col gap-2">
+              <select onChange={(e) => orderStatusHandler(e, order._id)} value={order.orderStatus} className="p-2 font-semibold">
+                <option value="Order Placed">Order Placed</option>
+                <option value="Packing">Packing</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Out for delivery">Out for delivery</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+              <button onClick={(e) => deleteOrderHandle(e, order._id)} className="p-2 font-semibold border-2 rounded-md bg-red-500 text-white">
+                Delete Order
+              </button>
+            </div>
           </div>
         ))}
       </div>

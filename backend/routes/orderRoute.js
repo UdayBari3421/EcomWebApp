@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { placeOrder, placeOrderStripe, placeOrderRazorpay, allOrders, userOrders, updateOrderStatus, verifyStripe, verifyRazorpay } from "../controllers/orderController.js";
+import { placeOrder, placeOrderStripe, placeOrderRazorpay, allOrders, deleteOrder, userOrders, updateOrderStatus, verifyStripe, verifyRazorpay } from "../controllers/orderController.js";
 import adminAuth from "../middleware/adminAuth.js";
 import authUser from "../middleware/auth.js";
 
@@ -9,6 +9,7 @@ const orderRouter = Router();
 // Admin routes
 orderRouter.post("/list", adminAuth, allOrders);
 orderRouter.post("/status", adminAuth, updateOrderStatus);
+orderRouter.post("/delete", adminAuth, deleteOrder);
 
 // Payement routes
 orderRouter.post("/place", authUser, placeOrder);

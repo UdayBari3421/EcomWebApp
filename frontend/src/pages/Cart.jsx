@@ -30,57 +30,64 @@ const Cart = () => {
   }, [cartItems, productData]);
 
   return (
-    <div className="border-t pt-14 px-6">
-      <div className="text-2xl mb-3">
+    <div className="border-t pt-14 px-6 mx-auto w-full">
+      <div className="text-3xl font-bold mb-6 text-center">
         <Title text1={"YOUR"} text2={"CART"} />
       </div>
       {cartData.length === 0 ? (
         <p className="text-center text-lg font-semibold py-10">🛒Your cart is empty </p>
       ) : (
-        <div className="space-y-5">
+        <div className="space-y-6">
           {cartData.map((item, index) => {
             const product = productData.find((product) => product._id === item._id);
             return (
-              <div key={index} className="py-4 border-t border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[3fr_2fr_1fr_0.5fr] items-center gap-4">
-                <div className="flex items-start gap-6">
-                  <img className="sm:w-20 aspect-square" src={product.image[0]} alt={product.name} />
-                  <div>
-                    <p className="text-xs sm:text-lg font-medium">{product.name}</p>
+              <div key={index} className="py-6 border rounded-lg border-gray-300 shadow-lg bg-white text-gray-700 flex flex-col sm:flex-row sm:items-center gap-6 px-6">
+                <div className="flex items-center gap-6 w-full sm:w-1/3">
+                  <img className="w-28 sm:w-32 aspect-square object-cover rounded-lg shadow" src={product.image[0]} alt={product.name} />
+                  <div className="flex flex-col">
+                    <p className="text-lg font-semibold">{product.name}</p>
                     <p className="text-sm text-gray-500">Size: {item.size}</p>
-                    <p className="mt-2">
+                    <p className="text-lg font-bold mt-2">
                       {currency}
                       {item.price}
                     </p>
                   </div>
                 </div>
-                <span className="flex gap-2justify-center flex-col">
-                  <p className="text-center">Quantity</p>
-                  <p className="text-center">{item.quantity}</p>
-                </span>
-                <div className="flex items-center gap-2">
-                  <button onClick={() => updateQuantity(item._id, item.size, item.price, item.quantity)} className="p-1 border rounded">
-                    <FiMinus />
-                  </button>
-                  <button onClick={() => addToCart(item._id, item.size, item.price)} className="p-1 border rounded">
-                    <FiPlus />
-                  </button>
-                  <button onClick={() => deleteFromCart(item._id, item.size)} className="p-1 border rounded">
-                    <RiDeleteBin6Line />
-                  </button>
+                <div className="flex flex-col items-center w-full sm:w-1/3">
+                  <p className="text-lg font-semibold">Quantity</p>
+                  <div className="flex items-center gap-3 mt-2">
+                    <button onClick={() => updateQuantity(item._id, item.size, item.price, item.quantity)} className="p-2 border rounded hover:bg-gray-100">
+                      <FiMinus />
+                    </button>
+                    <p className="text-lg font-medium">{item.quantity}</p>
+                    <button onClick={() => addToCart(item._id, item.size, item.price)} className="p-2 border rounded hover:bg-gray-100">
+                      <FiPlus />
+                    </button>
+                  </div>
                 </div>
-                <div className="flex gap-2 items-center justify-end">
-                  <p className="font-semibold">
-                    {currency}
-                    {item.price * item.quantity}
-                  </p>
+                <div className="flex items-center justify-evenly w-full sm:w-1/3">
+                  <span>
+                    <p className="text-lg font-semibold">Total</p>
+                    <p className="text-xl font-bold text-green-600">
+                      {currency}
+                      {item.price * item.quantity}
+                    </p>
+                  </span>
+                  <button onClick={() => deleteFromCart(item._id, item.size)} className="text-center items-center justify-center flex p-2 border rounded text-red-500 hover:bg-red-100">
+                    <RiDeleteBin6Line size={20} />
+                  </button>
                 </div>
               </div>
             );
           })}
-          <div className="border-t pt-6">
-            <CartTotal currency getTotalPrice deliveryCharge />
-            <p className={`${getTotalPrice() < 500 ? "block" : "hidden"} text-center text-gray-400`}>If Total Price is greater than 500 delivery is free</p>
-            <button onClick={() => navigate("place-order")} className="w-full bg-black text-white py-3 mt-6 rounded hover:bg-gray-800 transition">
+          <div className="border-t pt-6 text-center">
+            <CartTotal />
+            <p className={`${getTotalPrice() < 500 ? "block" : "hidden"} text-gray-400 text-sm`}>If Total Price is greater than 500, delivery is free</p>
+            <button
+              onClick={() => navigate("place-order")}
+              className={`w-full bg-black text-white py-3 mt-6 rounded hover:bg-gray-800 transition ${cartData.length === 0 ? "opacity-50 cursor-not-allowed" : ""}`}
+              disabled={cartData.length === 0}
+            >
               Proceed to Checkout
             </button>
           </div>

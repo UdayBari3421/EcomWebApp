@@ -10,6 +10,16 @@
     font-style: normal;
 }
 
+body {
+    /* do not allow user to select text */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 select,
 input,
 textarea {
