@@ -25,7 +25,7 @@ const loginUser = async (req, res) => {
       message: "User logged in successfully",
       status: 200,
       success: true,
-      data: user,
+      data: { ...user._doc, password: null },
       token,
     });
   } catch (error) {
@@ -85,6 +85,7 @@ const registerUser = async (req, res) => {
     });
   }
 };
+
 // route for admin login
 const adminLogin = async (req, res) => {
   try {
@@ -92,7 +93,7 @@ const adminLogin = async (req, res) => {
 
     if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
       const token = jwt.sign(email + password, process.env.JWT_SECRET);
-      return res.json({ message: "Admin logged in successfully", status: 200, success: true, token });
+      return res.json({ message: "Admin logged in successfully", username: process.env.ADMIN_NAME, status: 200, success: true, token });
     } else {
       return res.json({ message: "Invalid credentials", status: 400, success: false });
     }
@@ -102,4 +103,13 @@ const adminLogin = async (req, res) => {
   }
 };
 
-export { loginUser, registerUser, adminLogin };
+const updateProfile = async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+  } catch (error) {
+    console.log(error);
+    return res.json({ message: error.message, status: 500, success: false });
+  }
+};
+
+export { loginUser, registerUser, adminLogin, updateProfile };

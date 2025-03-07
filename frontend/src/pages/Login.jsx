@@ -3,7 +3,7 @@ import { ShopContext } from "../context/ShopContext";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-const Login = () => {
+const Login = ({ setUsername, username }) => {
   const [currentState, setCurrentState] = useState("Login");
   const { token, setToken, backendUrl, navigate } = useContext(ShopContext);
 
@@ -25,6 +25,8 @@ const Login = () => {
         if (response.data.success) {
           setCurrentState("Login");
           localStorage.setItem("token", response.data.token);
+          localStorage.setItem("username", response.data.data.name);
+          setUsername(response.data.data.name.split(" ")[0].charAt(0).toUpperCase() + response.data.data.name.split(" ")[0].slice(1));
           toast.success("Account created successfully");
         } else {
           toast.error(response.data.message);
@@ -32,8 +34,10 @@ const Login = () => {
       } else {
         const response = await axios.post(backendUrl + "/api/user/login", { email, password });
         if (response.data.success) {
+          setUsername(response.data.data.name.split(" ")[0].charAt(0).toUpperCase() + response.data.data.name.split(" ")[0].slice(1));
           setToken(response.data.token);
           localStorage.setItem("token", response.data.token);
+          localStorage.setItem("username", response.data.data.name);
           toast.success("Logged in successfully");
         } else {
           toast.error(response.data.message);

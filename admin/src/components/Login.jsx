@@ -4,7 +4,7 @@ import axios from "axios";
 import { backendUrl } from "../App";
 import { toast } from "react-toastify";
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, setUsername }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,6 +16,7 @@ const Login = ({ setToken }) => {
 
       if (response.data.success) {
         setToken(response.data.token);
+        setUsername(response.data.username);
       } else {
         toast.error(response.data.message);
       }

@@ -38,14 +38,6 @@ const Add = ({ token }) => {
 
   const onSubmitHandle = async (e) => {
     e.preventDefault();
-    // const productData = {
-    //   name,
-    //   price: prices,
-    //   description,
-    //   image: images.filter(Boolean),
-    //   category,
-    //   bestseller,
-    // };
     try {
       const formData = new FormData();
 
