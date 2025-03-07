@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { FiShoppingBag } from "react-icons/fi";
+import { MdList } from "react-icons/md";
 
 const Sidebar = () => {
   return (
@@ -25,7 +26,7 @@ const Sidebar = () => {
           }
           to="/list"
         >
-          <FiShoppingBag className="w-5 h-5" />
+          <MdList className="w-5 h-5" />
           <p className="hidden md:block ">List Items</p>
         </NavLink>
         <NavLink
