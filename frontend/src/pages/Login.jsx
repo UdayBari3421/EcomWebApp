@@ -49,6 +49,8 @@ const Login = ({ setUsername, username }) => {
     }
   };
 
+  const forgetPassword = async () => {};
+
   return (
     <form onSubmit={handleFormSubmit} className="flex flex-col items-center w-[90%] sm:max-w-96 mx-auto mt-14 gap-4 text-gray-800">
       <div className="inline-flex items-center gap-2 mb-2 mt-10">
@@ -61,7 +63,9 @@ const Login = ({ setUsername, username }) => {
       <input required type="password" onChange={(e) => setPassword(e.target.value)} className="w-full px-3 py-2 border border-gray-800" placeholder="Password" />
 
       <div className="w-full flex justify-between text-sm mt-[-8px]">
-        <p className="cursor-pointer">Forgot password?</p>
+        <p onClick={forgetPassword} className="cursor-pointer">
+          Forgot password?
+        </p>
         {currentState === "Sign Up" ? (
           <p onClick={() => setCurrentState("Login")} className="cursor-pointer">
             Already have an account?
