@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="">
           <span className="flex items-center w-fit">
             <Link to="/">
-              <img src={logo} className="w-[3rem] h-full" />
+              <img draggable="false" src={logo} className="w-[3rem] h-full" />
             </Link>
             <p>Shree Shyam Natural Iceream</p>
           </span>

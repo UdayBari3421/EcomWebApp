@@ -43,7 +43,7 @@ const Cart = () => {
             return (
               <div key={index} className="py-6 border rounded-lg border-gray-300 shadow-lg bg-white text-gray-700 flex flex-col sm:flex-row sm:items-center gap-6 px-6">
                 <div className="flex items-center gap-6 w-full sm:w-1/3">
-                  <img className="w-28 sm:w-32 aspect-square object-cover rounded-lg shadow" src={product.image[0]} alt={product.name} />
+                  <img draggable="false" className="w-28 sm:w-32 aspect-square object-cover rounded-lg shadow" src={product.image[0]} alt={product.name} />
                   <div className="flex flex-col">
                     <p className="text-lg font-semibold">{product.name}</p>
                     <p className="text-sm text-gray-500">Size: {item.size}</p>

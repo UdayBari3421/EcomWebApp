@@ -24,7 +24,7 @@ const Navbar = () => {
     <div className="flex items-center justify-between py-5 px-7 font-medium">
       <span className="flex items-center w-fit">
         <Link to="/">
-          <img src={logo} className="md:w-[3rem] h-full w-[2rem]" />
+          <img draggable="false" src={logo} className="md:w-[3rem] h-full w-[2rem]" />
         </Link>
         <p className="hidden md:block">Shree Shyam Natural Iceream</p>
       </span>

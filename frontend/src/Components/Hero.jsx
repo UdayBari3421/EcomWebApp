@@ -24,7 +24,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="w-full md:w-6/12 sm:w-6/12 flex items-center justify-center pt-10 sm:py-0">
-        <img className="w-full h-full max-h-[720px] aspect-square" src={heroImageData[Math.floor(Math.random() * 7)]} alt="" />
+        <img draggable="false" className="w-full h-full max-h-[720px] aspect-square" src={heroImageData[Math.floor(Math.random() * 7)]} alt="" />
       </div>
     </div>
   );

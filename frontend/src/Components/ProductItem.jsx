@@ -10,6 +10,7 @@ const ProductItem = ({ id, image, name, price }) => {
       <div className="overflow-hidden p-1">
         <div className="overflow-hidden w-full h-fit rounded-2xl">
           <img
+            draggable="false"
             className="hover:scale-105 transition-transform duration-300 ease-in-out object-cover aspect-square w-full"
             src={image?.[0] || "/default-image.png"} // Fallback if image not available
             alt={name || "Product Image"}
