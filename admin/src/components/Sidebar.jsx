@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { FiShoppingBag } from "react-icons/fi";
 import { MdList } from "react-icons/md";
+import { FaUser, FaUsers } from "react-icons/fa";
+import { RiUserAddFill } from "react-icons/ri";
 
 const Sidebar = () => {
   return (
@@ -13,8 +15,7 @@ const Sidebar = () => {
               ? "text-[#2c4952] bg-[#ff8ff4ae] flex items-center gap-3 border-2 border-gray-400 border-r-0 px-3 py-2 rounded-l"
               : "flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l"
           }
-          to="/add"
-        >
+          to="/add">
           <IoMdAddCircleOutline className="w-5 h-5" />
           <p className="hidden md:block ">Add Items</p>
         </NavLink>
@@ -24,8 +25,7 @@ const Sidebar = () => {
               ? "text-[#2c4952] bg-[#ff8ff4ae] flex items-center gap-3 border-2 border-gray-400 border-r-0 px-3 py-2 rounded-l"
               : "flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l"
           }
-          to="/list"
-        >
+          to="/list">
           <MdList className="w-5 h-5" />
           <p className="hidden md:block ">List Items</p>
         </NavLink>
@@ -35,10 +35,29 @@ const Sidebar = () => {
               ? "text-[#2c4952] bg-[#ff8ff4ae] flex items-center gap-3 border-2 border-gray-400 border-r-0 px-3 py-2 rounded-l"
               : "flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l"
           }
-          to="/orders"
-        >
+          to="/orders">
           <FiShoppingBag className="w-5 h-5" />
           <p className="hidden md:block ">Orders</p>
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#2c4952] bg-[#ff8ff4ae] flex items-center gap-3 border-2 border-gray-400 border-r-0 px-3 py-2 rounded-l"
+              : "flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l"
+          }
+          to="/users">
+          <FaUsers className="w-5 h-5" />
+          <p className="hidden md:block ">Users</p>
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#2c4952] bg-[#ff8ff4ae] flex items-center gap-3 border-2 border-gray-400 border-r-0 px-3 py-2 rounded-l"
+              : "flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l"
+          }
+          to="/add-user">
+          <RiUserAddFill className="w-5 h-5" />
+          <p className="hidden md:block ">Add User</p>
         </NavLink>
       </div>
     </div>

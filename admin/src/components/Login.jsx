@@ -12,7 +12,7 @@ const Login = ({ setToken, setUsername }) => {
     try {
       e.preventDefault();
 
-      const response = await axios.post(backendUrl + "/api/user/admin", { email, password });
+      const response = await axios.post(backendUrl + "/api/admin/login", { email, password });
 
       if (response.data.success) {
         setToken(response.data.token);
@@ -33,12 +33,20 @@ const Login = ({ setToken, setUsername }) => {
         <hr className="my-8 mt-2 border-2 p-[0.5px] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full" />
         <div className="flex justify-between items-center gap-3">
           <div className="w-1/2 md:block hidden">
-            <img src={loginBg} className="w-[400px]" alt="" />
+            <img
+              src={loginBg}
+              className="w-[400px]"
+              alt=""
+            />
           </div>
 
-          <form onSubmit={onSubmitHandler} className="w-1/2 flex-col flex justify-center ">
+          <form
+            onSubmit={onSubmitHandler}
+            className="w-1/2 flex-col flex justify-center ">
             <div className="mb-3 min-w-72">
-              <label htmlFor="email" className="text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="email"
+                className="text-sm font-medium text-gray-700 mb-2">
                 Email Address
               </label>
               <input
@@ -52,7 +60,9 @@ const Login = ({ setToken, setUsername }) => {
               />
             </div>
             <div className="mb-3 min-w-72">
-              <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="password"
+                className="text-sm font-medium text-gray-700 mb-2">
                 Password
               </label>
               <input
@@ -65,7 +75,9 @@ const Login = ({ setToken, setUsername }) => {
                 required
               />
             </div>
-            <button className="mt-2 w-full py-2 px-4 rounded-md text-white bg-gradient-to-r from-violet-500 to-fuchsia-500" type="submit">
+            <button
+              className="mt-2 w-full py-2 px-4 rounded-md text-white bg-gradient-to-r from-violet-500 to-fuchsia-500"
+              type="submit">
               Login
             </button>
           </form>
