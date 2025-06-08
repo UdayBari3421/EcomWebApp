@@ -16,6 +16,7 @@ const Login = ({ setToken, setUsername }) => {
 
       if (response.data.success) {
         setToken(response.data.token);
+        console.log(response.data);
         setUsername(response.data.username);
       } else {
         toast.error(response.data.message);

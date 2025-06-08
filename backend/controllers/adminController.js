@@ -53,6 +53,7 @@ const adminLogin = async (req, res) => {
       status: 200,
       success: true,
       token,
+      username: admin.name,
     });
   } catch (error) {
     console.log(error);
