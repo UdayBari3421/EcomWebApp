@@ -86,23 +86,6 @@ const registerUser = async (req, res) => {
   }
 };
 
-// route for admin login
-const adminLogin = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
-      const token = jwt.sign(email + password, process.env.JWT_SECRET);
-      return res.json({ message: "Admin logged in successfully", username: process.env.ADMIN_NAME, status: 200, success: true, token });
-    } else {
-      return res.json({ message: "Invalid credentials", status: 400, success: false });
-    }
-  } catch (error) {
-    console.log(error);
-    return res.json({ message: error.message, status: 500, success: false });
-  }
-};
-
 const updateProfile = async (req, res) => {
   try {
     const { name, email, oldpassword, password } = req.body;
@@ -121,13 +104,20 @@ const updateProfile = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const updatedUser = await userModel.findOneAndUpdate({ email }, { name, email, password: hashedPassword }, { new: true }).select("-password");
+    const updatedUser = await userModel
+      .findOneAndUpdate({ email }, { name, email, password: hashedPassword }, { new: true })
+      .select("-password");
 
-    return res.json({ message: "User updated successfully", status: 200, success: true, data: updatedUser });
+    return res.json({
+      message: "User updated successfully",
+      status: 200,
+      success: true,
+      data: updatedUser,
+    });
   } catch (error) {
     console.log(error);
     return res.json({ message: error.message, status: 500, success: false });
   }
 };
 
-export { loginUser, registerUser, adminLogin, updateProfile };
+export { loginUser, registerUser, updateProfile };

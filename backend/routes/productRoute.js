@@ -1,5 +1,10 @@
 import express from "express";
-import { listProducts, addProduct, singleProduct, removeProduct } from "../controllers/productController.js";
+import {
+  listProducts,
+  addProduct,
+  singleProduct,
+  removeProduct,
+} from "../controllers/productController.js";
 import upload from "../middleware/multer.js";
 import adminAuth from "../middleware/adminAuth.js";
 const productRouter = express.Router();

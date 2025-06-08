@@ -1,6 +1,16 @@
 import { Router } from "express";
 
-import { placeOrder, placeOrderStripe, placeOrderRazorpay, allOrders, deleteOrder, userOrders, updateOrderStatus, verifyStripe, verifyRazorpay } from "../controllers/orderController.js";
+import {
+  placeOrder,
+  placeOrderStripe,
+  placeOrderRazorpay,
+  allOrders,
+  deleteOrder,
+  userOrders,
+  updateOrderStatus,
+  verifyStripe,
+  verifyRazorpay,
+} from "../controllers/orderController.js";
 import adminAuth from "../middleware/adminAuth.js";
 import authUser from "../middleware/auth.js";
 

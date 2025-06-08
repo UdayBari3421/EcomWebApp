@@ -9,12 +9,11 @@ const adminAuth = async (req, res, next) => {
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    console.log(decoded);
-    if (decoded !== process.env.ADMIN_EMAIL + process.env.ADMIN_PASSWORD) {
+    if (!decoded || decoded.userType !== "admin") {
       return res.json({ message: "Unauthorized Access", status: 401, success: false });
     }
 
+    req.userId = decoded.id;
     next();
   } catch (error) {
     console.log(error);
