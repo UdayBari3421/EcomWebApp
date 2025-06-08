@@ -6,7 +6,15 @@ import heroImage5 from "../assets/product-images/strawberry1.jpg";
 import heroImage6 from "../assets/product-images/brownie2.jpg";
 import heroImage7 from "../assets/product-images/blackCurrant1.jpg";
 
-let heroImageData = [heroImage, heroImage2, heroImage3, heroImage4, heroImage5, heroImage6, heroImage7];
+let heroImageData = [
+  heroImage,
+  heroImage2,
+  heroImage3,
+  heroImage4,
+  heroImage5,
+  heroImage6,
+  heroImage7,
+];
 const Hero = () => {
   return (
     <div className="flex flex-col sm:flex-row border rounded-3xl  overflow-hidden border-gray-400">
@@ -16,7 +24,9 @@ const Hero = () => {
             <p className="w-8 md:w-11 h-[2px] bg-[#414141]"></p>
             <p className="font-medium text-sm md:text-base prata-regular">Our BestSeller</p>
           </div>
-          <h1 className="text-3xl sm:py-3 lg:text-5xl leading-relaxed prata-regular">Latest Arrivals</h1>
+          <h1 className="text-3xl sm:py-3 lg:text-5xl leading-relaxed prata-regular">
+            Latest Arrivals
+          </h1>
           <div className="flex items-center gap-2">
             <p className="font-semibold text-sm md:text-base prata-regular">SHOP NOW</p>
             <p className="w-8 md:w-11 h-[2px] bg-[#414141]"></p>
@@ -24,7 +34,12 @@ const Hero = () => {
         </div>
       </div>
       <div className="w-full md:w-6/12 sm:w-6/12 flex items-center justify-center pt-10 sm:py-0">
-        <img draggable="false" className="w-full h-full max-h-[720px] aspect-square" src={heroImageData[Math.floor(Math.random() * 7)]} alt="" />
+        <img
+          draggable="false"
+          className="w-full h-full max-h-[560px] aspect-square"
+          src={heroImageData[Math.floor(Math.random() * 7)]}
+          alt=""
+        />
       </div>
     </div>
   );
